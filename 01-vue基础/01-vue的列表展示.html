@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-for指令的声明式指令</title>
+</head>
+<body>
+
+<!--交给vue的app对象控制-->
+<div id="app">
+    <ul>
+        <!--这里遍历了vue的app对象的的movies属性,
+        //并且使用了响应与声明式编程,将数据展现出来,达到了牵一发动全身的效-->
+        <li v-for="item in movies">{{item}}</li>
+    </ul>
+</div>
+
+
+
+<script src="../js/vue.js"></script>
+<script>
+    //注意这里是V大写
+    const app = new Vue({
+        //注意这里在名字前面要加#号
+        el:'#app',
+        data: {
+             //写对象的数据
+             message: '你好啊',
+             //写对象的list
+             movies: ['星际穿越',"大话西游","少年派的奇幻旅行"]
+        }
+    })
+</script>
+
+</body>
+</html>

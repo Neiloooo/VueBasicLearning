@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <title>Vue实现计数器</title>
+</head>
+<body>
+<div id="app">
+<!--    这里将vue中双向绑定的属性进行展示-->
+    <h2>当前技术:{{counter}}</h2>
+<!--    这里使用了vue的v-on监听了click事件,触发后会执行vue内部定义的add方法-->
+    <button v-on:click="add">+</button>
+<!--    @为v-on的语法糖-->
+    <button @click="sub">-</button>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+    //注意这里是V大写
+    const app = new Vue({
+        //注意这里在名字前面要加#号
+        el:'#app',
+        data: {
+            //写对象的数据
+            message: '你好啊',
+            //写对象的list
+            movies: ['星际穿越',"大话西游","少年派的奇幻旅行"],
+            //计数变量的初始化
+            counter: 0
+        },
+        // vue内部定义方法的位置
+        methods: {
+            // 定义增加方法
+            add: function () {
+                console.log("add方法被执行了");
+                this.counter++
+            },
+            // 定义减法
+            sub: function () {
+                console.log("sub方法被执行");
+                this.counter--
+            }
+        }
+    })
+</script>
+</body>
+</html>
