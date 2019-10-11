@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-bind用来绑定标签属性</title>
+</head>
+<body>
+    <div id="app">
+<!--        动态绑定绑定图片url-->
+        <img v-bind:src="aHrf">
+<!--        动态绑定超链接-->
+        <a v-bind:href="imgUrl">啊</a>
+<!--        v-bind还有语法糖形式缩写,:冒号-->
+        <img :src="aHrf">
+    </div>
+
+    <script src="../js/vue.js"></script>
+    <script>
+        const app = new Vue({
+          el:"#app",
+          data:{
+            message:"模板",
+            imgUrl: "https://miaosha.jd.com/#50110805858",
+            aHrf:"https://img11.360buyimg.com/n1/s450x450_jfs/t22330/332/515182850/188708/3dbe80f8/5b0fbaabN3229c7a3.jpg"
+          }
+        })
+    </script>
+</body>
+</html>

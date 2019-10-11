@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-bind可以绑定class属性,并且可以绑定其方法对class属性进行操作</title>
+<!--定义了active的样式-->
+<style>
+    .active{
+        color: aqua;
+    }
+</style>
+</head>
+<body>
+<div id="app">
+<!--    这里绑定class属性,并且使用了布尔值对其样式进行简单控制-->
+<!--    <h2 v-bind:class="{key1:value1,key2:value2}">{{message}}</h2>-->
+<!--    <h2 v-bind:class="{类名1:true,类名2:boolean}">通过布尔值控制vue内类对象的属性是否展示</h2>-->
+    <h2 class="title" v-bind:class="{active: isActive, line: isLine}"></h2>
+<!--    这两个上下是一样的,只不过这里绑定(调用)了vue内部的方法,-->
+    <h2 class="title" v-bind:class="getClass()">{{message}}</h2>
+<!--    添加按钮btnClick的事件与方法对标签中的class属性进行控制-->
+    <button v-on:click="btnClick">按钮</button>
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue({
+      el: "#app",
+      data: {
+        message: "模板",
+        // 傻逼vue管这里的数据叫对象,json对象吧
+        isActive: true,
+        isLine: true
+      },
+      methods: {
+        //定义取反方法
+        btnClick: function () {
+          this.isActive = !this.isActive
+        },
+        //定义class属性的函数,可以在展示层直接调用
+        getClass: function () {
+          return {active: this.isActive, line: this.isLine}
+        }
+      }
+    })
+</script>
+</body>
+</html>

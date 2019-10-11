@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mustache语法:{{}}</title>
+</head>
+<body>
+
+<div id="app">
+<!--    插值用法的最基本的用法,输出到显示层{{}}-->
+    <h2>{{message}}</h2>
+    <h2>{{message}},插值可以和普通文字一起显示</h2>
+<!--    插值表达式内可以使用一些简单的表达,比如字符串拼接+-->
+    <h2>{{fistName + lastName}}</h2>
+<!--    标签中可以同时使用两个插值表达式-->
+    <h2>{{firstName}}{{lastName}}</h2>
+<!--    插值表达式内甚至可以使用最简单的*号,进行乘以2输出-->
+    <h2>{{counter * 2}}</h2>
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el:"#app",
+    data:{
+      message:"模板",
+      firstName:"达喀尔",
+      lastName:"张三",
+      counter:100
+    }
+  })
+</script>
+
+
+</body>
+</html>

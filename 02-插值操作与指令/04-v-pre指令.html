@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-pre指令的作用是使文本中的插值{{}}无效化</title>
+</head>
+<body>
+<div id="app">
+<!--    使差值操作无效化-->
+    <h2 v-pre>{{message}}</h2>
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue({
+      el:"#app",
+      data:{
+        message:"模板"
+      }
+    })
+</script>
+</body>
+</html>

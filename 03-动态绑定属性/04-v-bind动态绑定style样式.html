@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>对象语法,也就是从data区域内直接获取属性</title>
+</head>
+<body>
+<div id="app">
+    {{message}}
+<!--    通过v-bind指令绑定样式,{key:value}形式,且前面是属性名,后面是值,value的值从vue对象内部获取-->
+    <h2 :style="{fontsize: finalSize + 'px',backgroundColr: finalColor}">{{message}}</h2>
+<!--    同样可以通过方法获取-->
+    <h2 :style="getStyles()"></h2>
+
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue({
+      el:"#app",
+      data:{
+        message:"模板",
+        //在vue内部定义属性
+        finalSize:100,
+        finalColor:'red'
+      },
+      methods:{
+        //定义函数返回特定样式,后期也可以直接从服务器中传出来
+        getStyles: function () {
+          return{fontSize: this.finalSize+'px',backgroundColor:this.finalColor }
+        }
+
+
+      }
+
+
+
+    })
+</script>
+</body>
+</html>

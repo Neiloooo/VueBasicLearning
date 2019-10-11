@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ES6的对象增强与函数增强</title>
+</head>
+<body>
+<script>
+    //1.属性的增强写法
+    const name = "why";
+    const age=18;
+    const height=1.88;
+    //ES6的对象属性增强方式:
+    //这样obj对象就可以获得全部上面定义的全部属性了
+    const obj={
+      name,
+      age,
+      height,
+    };
+    console.log(obj);
+    //ES6的函数增强写法;
+    const obj={
+      //新增run方法,相当于:
+      // run:function(){
+      //
+      // }
+      run(){
+
+      },
+      //新增eat方法
+      eat(){
+
+      }
+    }
+</script>
+</body>
+</html>

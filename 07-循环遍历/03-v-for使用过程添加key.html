@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-for使用过程添加key</title>
+</head>
+<body>
+<div id="app">
+<!--v-for中添加Key是为了增强中间插入元素更新虚拟doom的效率-->
+    <ul>
+        <li v-for="item in letters" :key="item">{{item}}</li>
+    </ul>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue({
+      el:"#app",
+      data:{
+        letters:["A","B","C"],
+        message:"模板"
+      }
+    })
+</script>
+</body>
+</html>

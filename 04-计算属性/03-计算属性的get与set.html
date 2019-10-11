@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计算属性computed一般有get与set属性,但是一般我们只使用get属性,所以2都是2简写方式</title>
+</head>
+<body>
+<div id="app">
+    {{message}}
+    <h2>{{message}}</h2>
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue({
+      el:"#app",
+      data:{
+        message:"模板",
+        firstName: "一二三",
+        lastName: "四五六"
+      },
+      computed:{
+        fullName:{
+          set: function (newValue) {
+            const name = newValue.split(" ");
+            this.firstName=name[0];
+            this.lastName=name[1];
+          },
+          //一般来说计算属性我们只是默认使用其get方法,所以一般会使用简写的方式,直接定义
+          get: function () {
+            return this.firstName+" "+this.lastName
+          }
+          // fullName: function () {
+          //   return this.firstName+" "+this.lastName
+          // }
+        }
+      }
+
+    })
+</script>
+</body>
+</html>

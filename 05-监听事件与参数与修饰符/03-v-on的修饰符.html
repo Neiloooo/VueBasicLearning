@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue修饰符</title>
+</head>
+<body>
+
+<div id="app" >
+    <!--1.stop修饰符的使用-->
+    <!--防止事件冒泡,即点击div里的按钮,会触发到div的点击事件-->
+    <!--1.而vue中的修饰符.stop可以防止事件冒泡,只有当点击div的时候,divClick方法才会被执行,同时也会执行按钮的方法-->
+    <div @click="divClick">
+        aaaaaa
+        <button @click.stop="btnClick">验证事件冒泡的按钮</button>
+    </div>
+    <!--2.prevent修饰符的使用,可以防止按钮执行默认方法,执行自定义方法-->
+    <br>
+    <form action="baidu" >
+        <input type="submit" value="提交" @click.prevent="submitClick">
+    </form>
+    <!--3.监听某个键盘的键的点击与上抬,.enter代表只会监听enter键,才会执行对应的方法                                               -->
+    <input type="text" @keyup.enter="keyUp">
+    <!--4.once修饰符,只触发一次,修饰后只能触发一次方法-->
+
+</div>
+
+
+
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue({
+      el:"#app",
+      data:{
+        message:"你好啊"
+      },
+      methods:{
+        btnClick(){
+          console.log("btnClick");
+        },
+        divClick(){
+          console.log("divClick");
+        },
+        submitClick(){
+          console.log("submitClick");
+        },
+        keyUp(){
+          console.log("keyUp")
+        }
+
+      }
+    })
+</script>
+</body>
+</html>

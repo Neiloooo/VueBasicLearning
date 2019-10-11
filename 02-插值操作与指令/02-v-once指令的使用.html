@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-once指令</title>
+</head>
+<body>
+
+    <div id="app">
+        <h2> {{message}}</h2>
+<!--被v-once指令控制的标签不会因为数据的改变而改变显示层数据-->
+        <h2 v-once>{{message}}</h2>
+    </div>
+
+    <script src="../js/vue.js"></script>
+    <script>
+        const app = new Vue({
+          el:"#app",
+          data:{
+            message:"模板"
+          }
+        })
+    </script>
+</body>
+</html>

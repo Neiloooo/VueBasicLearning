@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-html指令:解析HTML格式标签,并且展示,主要与{{}}进行区分</title>
+</head>
+<div id="app">
+<!--    这样就是直接显示无法解析标签-->
+    <h2>{{url}}</h2>
+<!--    这样会解析url中的html标签-->
+    <h2 v-html="url"></h2>
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue({
+      el:"#app",
+      data:{
+        message:"模板",
+        url: '<a href="http//www.baidu.com">百度一下你就知道</a>'
+      }
+    })
+</script>
+
+
+<body>
+
+</body>
+</html>

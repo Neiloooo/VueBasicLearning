@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计算属性的基本使用</title>
+</head>
+<body>
+<div id="app">
+<!--    使用vue方法中,实现简单的字符串拼接-->
+    <h2>{{getFullName()}}</h2>
+<!--    使用vue内部的计算属性的方法同样可以实现拼接绑定字符串的效果-->
+    <h2>{{fullName}}</h2>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue({
+      el:"#app",
+      data:{
+        message:"模板",
+        firstName: '张三',
+        lastName: '小的'
+      },
+      //computed:计算属性(),写法和方法类似,但是本质上是属性
+      computed: {
+        fullName: function () {
+          return this.firstName+'       '+this.lastName
+        }
+      },
+      //这里我们定义我们需要使用的方法,和上面的计算属性方法效果一样
+      //只是调用方式不一样
+      methods:{
+        getFullName(){
+          return this.firstName+this.lastName
+        }
+      }
+    })
+</script>
+</body>
+</html>

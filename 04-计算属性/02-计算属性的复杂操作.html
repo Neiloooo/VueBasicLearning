@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+<!--    调用计算属性totalPrice-->
+  <h2>总价格为:{{totalPrice}}</h2>
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue({
+      el:"#app",
+      data:{
+        message:"模板",
+        //这里定义一个数组里套对象
+        books:[
+          {id:110,name:"这是第一个对象",price:119},
+          {id:111,name:"这是第二个对象",price:119},
+          {id:110,name:"这是第三对象",price:119},
+        ]
+      },
+      computed:{
+        //定义一个函数,获取books中对象,并且将其price属性进行相加
+        totalPrice:function () {
+          let result = 0;
+          for (let i = 0;i<this.books.length;i++){
+            result+=this.books[i].price
+          }
+          return result
+        }
+        //ES6为我们提供了更多间接的遍历方法
+        // ①for(let i in this.books){
+        //   this.books[i]
+        //  }
+        // ②for (let book of this.books){
+        //
+        //  }
+      }
+
+    })
+</script>
+</body>
+</html>

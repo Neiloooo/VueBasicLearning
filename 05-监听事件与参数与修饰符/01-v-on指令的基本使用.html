@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>v-on的基本使用及其@语法糖</title>
+</head>
+<body>
+<div id="app">
+    <h2>{{counter}}</h2>
+<!--    v-click的语法糖@: 监听指令调用vue内部的方法2-->
+    <button v-on:click="Increment">+</button>
+    <button @click="decrement">-</button>
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el:"#app",
+    data:{
+      counter: 0,
+      message:"模板"
+    },
+    methods:{
+      //使用es6的语法新增方法
+      Increment(){
+        this.counter++
+      },
+      decrement(){
+        this.counter--
+      }
+    }
+  })
+</script>
+</body>
+</html>

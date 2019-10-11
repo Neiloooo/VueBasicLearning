@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>购物车案例</title>
+<!--导入css样式-->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+<!--        如果data数据里,books里有数据,则展示-->
+       <div v-if="books.length">
+           <table>
+               <thead>
+               <tr>
+                   <th></th>
+                   <th>书籍名称</th>
+                   <th>出版日期</th>
+                   <th>价格</th>
+                   <th>购买数量</th>
+                   <th>操作</th>
+               </tr>
+               </thead>
+               <tbody>
+               <tr v-for="(item,index) in books">
+                   <td>{{item.id}}</td>
+                   <td>{{item.name}}</td>
+                   <td>{{item.date}}</td>
+<!--               采用过滤器的方式对结果进行过滤-->
+                   <td>{{item.price | showPrice}}</td>
+                   <td>
+                       <button>-</button>
+                       {{item.count}}
+                       <button>+</button>
+                   </td>
+                    <td><button>移除按钮谢谢</button></td>
+               </tr>
+               </tbody>
+           </table>
+       </div>
+    </div>
+<!-- 导入vuejs源码与mainjs入口-->
+    <script src="../js/vue.js"></script>
+    <script src="main.js"></script>
+    <script>
+    </script>
+</body>
+</html>
