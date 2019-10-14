@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>父子组件通信props</title>
+</head>
+<body>
+
+<div id="app">
+<!-- 通过v-bind绑定属性,父组件绑定子组件的属性,但是用的是父组件的值-->
+    <cpn :cmessage="message" :cmovies="movies"></cpn>
+</div>
+
+<template id="cpn">
+    <div>
+        <ul>
+            <li v-for="item in cmovies">{{item}}</li>
+        </ul>
+        <h2>{{cmessage}}</h2>
+    </div>
+</template>
+
+<script src="../js/vue.js"></script>
+<script>
+    //父传子组件:props
+    const cpn={
+      template: "#cpn",
+      //props:["cmovies","cmessage"] 子组件向根组件通信
+      props:{
+        //1.类型限制,定义变量的类型
+        //cmovies:Array,
+        //cmessage:String,
+
+        //2.提供子组件的默认值,以及类型,还有该属性是否必传
+        cmessage: {
+          type:String,
+          default:"aaaaaa",
+          required:true
+        },
+        //类型是对象或者数组时,默认值必须是一个函数
+        cmovies: {
+          type: Array,
+          default(){
+            return []
+          }
+        }
+      },
+      //父子组件传递值,data域需要返回函数
+      data(){
+        return {}
+      },
+      methods:{
+      }
+    };
+    const app = new Vue({
+      el:"#app",
+      data:{
+        message:"模板",
+        //数据域,数组
+        movies:["海王","海贼王","海尔兄弟"]
+      },
+      //注册子组件cpn
+      components:{
+        cpn
+      }
+    })
+</script>
+</body>
+</html>

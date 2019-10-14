@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件化的两步基本使用</title>
+</head>
+<body>
+<div id="app">
+<!--自定义标签,然后通过标签进行复用-->
+    <my-cpn></my-cpn>
+    <my-cpn></my-cpn>
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+    // 1.创建组件构造器对象
+   const cpnC=Vue.extend({
+     //对象里创建模板
+     template:`
+     <div>
+        <h2>vue组件化标题</h2>
+        <p>我是内容,你哈哈哈</p>
+        <p>你是哈哈哈</p>
+     </div>
+     `
+   });
+    //2.注册组件,定义标签名与想要定义的模板名
+    Vue.component("my-cpn",cpnC);
+
+    const app = new Vue({
+      el:"#app",
+      data:{
+        message:"模板"
+      }
+    })
+</script>
+</body>
+</html>

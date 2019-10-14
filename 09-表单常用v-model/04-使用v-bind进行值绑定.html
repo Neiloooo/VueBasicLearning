@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-bind与v-model进行值绑定与属性绑定</title>
+</head>
+<body>
+<div id="app">
+    <h2>{{hobbies}}</h2>
+<!--    列表中遍历数据,从而产生多个按钮-->
+    <label v-for="item in originHobbies" :for="item">
+<!--        通过v-bind绑定data域中的数据,value与id同理-->
+        <input type="checkbox" :value="item" :id="item" v-model="hobbies">{{item}}
+    </label>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue({
+      el:"#app",
+      data:{
+        message:"模板",
+        hobbies:[],
+        originHobbies:["篮球","足球","羽毛球","台球"]
+      }
+    })
+</script>
+</body>
+</html>

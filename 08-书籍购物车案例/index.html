@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>购物车案例</title>
@@ -29,15 +29,20 @@
 <!--               采用过滤器的方式对结果进行过滤-->
                    <td>{{item.price | showPrice}}</td>
                    <td>
-                       <button>-</button>
+<!--                       数量小等于1,就绑定disabled属性,让它不再使用-->
+                       <button @click="decrement(index)" v-bind:disabled="item.count<=1">-</button>
                        {{item.count}}
-                       <button>+</button>
+                       <button @click="increment(index)">+</button>
                    </td>
-                    <td><button>移除按钮谢谢</button></td>
+                    <td><button @click="removeHandle(index)">移除按钮谢谢</button></td>
                </tr>
                </tbody>
            </table>
+<!--           通过vue的计算属性就散总价格,并且通过过滤方法进行格式化-->
+           <h2>总价格为:{{totalPrice | showPrice}}</h2>
        </div>
+<!--    v-else与v-if结合使用,当购物车里数据为空的时候展示404页面-->
+        <h2 v-else>购物车为空了,恭喜你</h2>
     </div>
 <!-- 导入vuejs源码与mainjs入口-->
     <script src="../js/vue.js"></script>

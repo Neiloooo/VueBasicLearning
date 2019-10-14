@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件模板的分离写法</title>
+</head>
+<body>
+<div id="app">
+    <cpn></cpn>
+    <cpn></cpn>
+    <cpn></cpn>
+</div>
+<!--这是分离出来的模板代码-->
+<template id="cpn">
+    <div>
+        <h2>这是模板分离</h2>
+        <p>你是内容啊哦</p>
+    </div>
+</template>
+
+<script src="../js/vue.js"></script>
+<script>
+
+    //1.通过模板分离的方式注册组件
+    Vue.component("cpn",{
+      template:"#cpn"
+    });
+
+    const app = new Vue({
+      el:"#app",
+      data:{
+        message:"模板"
+      }
+    })
+</script>
+</body>
+</html>

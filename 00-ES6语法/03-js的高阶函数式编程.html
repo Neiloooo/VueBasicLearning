@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ES6的三大高阶函数,函数式编程传入的是函数</title>
+</head>
+<body>
+<div id="app">
+    <h2>ES6的三大高阶函数:filter,map,reduce</h2>
+</div>
+
+<script>
+    //编程范式:命令式编程/声明式编程
+    //编程范式: 面向对象编程(对象)/函数式编程(函数)
+    //filter/map/reduce(三个高阶函数,ES6)
+
+    //1.filter中的回调函数有一个要求:必须返回一个布尔值(过滤函数)
+    //  ①true:当返回true时,函数内部会自动将这次回调的n加入到新的数组中
+    //  ②false:当返回为false时,函数内部会过滤掉这次的n
+    const nums=[10,20,111,222,333,40,50];
+    //1.filter函数的使用,对nums数组进行过滤,留下小于100的数
+    let  newNums = nums.filter(function (n) {
+      return n<100
+    });
+    console.log(newNums);
+    
+    //2.map函数的使用(映射函数),对数据全部进行乘以2
+    let new2Nums = newNums.map(function (n) {//20
+      return n*2
+    });
+    console.log(new2Nums);
+
+    //3.reduce函数的使用(对数组中的元素进行汇总的加减乘除各种运算)
+    //preValue为初始,以及上次计算完返回的数值
+    let total = new2Nums.reduce(function (preValue,n) {
+      //preValue+n为参数2,每次递归传递给下一个
+      return preValue+n
+      //0为参数1,即开始值
+    },0);
+    console.log(total);
+</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>语法糖的形式实现组件化</title>
+</head>
+<body>
+<div id="app">
+    <cpn1></cpn1>
+    <cpn2></cpn2>
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+
+    // 1.全局组件注册的语法糖
+    Vue.component("cpn1",{
+      template:`
+      <div>
+      <h2>这是通过语法糖方式注册的全局组件</h2>
+      <p>vue真牛逼</p>
+      </div>
+      `
+    });
+
+    //2.注册局部组件的语法糖
+    const app = new Vue({
+      el:"#app",
+      data:{
+        message:"模板"
+      },
+      //components下进行局部组件的语法糖形式
+      components:{
+        "cpn2":{
+          template: `
+           <div>
+           <h2>这是注册局部组件的语法糖形式</h2>
+           <p>vue真牛逼</p>
+           </div>
+            `
+        }
+      }
+    })
+</script>
+</body>
+</html>

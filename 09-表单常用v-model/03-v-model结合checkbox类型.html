@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>单选与多选框的绑定</title>
+</head>
+<body>
+<div id="app">
+    <div>
+        <!--1.checkbox单选框-->
+        <label for="agree">
+            <input type="checkbox" id="agree" v-model="isAgree">同意协议
+        </label>
+        <h2>您选择的是: {{isAgree}}</h2>
+        <!--v-bind,绑定isAgree属性,使其按钮失效-->
+        <button :disabled="!isAgree">下一步</button>
+    </div>
+<!--2.checkbox多选框,选中添加到集合data属性的hobbies集合中,通过v-model绑定到hobbies属性(集合中)-->
+    <label>
+        <input type="checkbox" value="篮球" v-model="hobbies">篮球
+        <input type="checkbox" value="足球" v-model="hobbies">足球
+        <input type="checkbox" value="乒乓球" v-model="hobbies">乒乓球
+        <input type="checkbox" value="羽毛球" v-model="hobbies">羽毛球
+    </label>
+    <h2>您的爱好是:{{hobbies}}</h2>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue({
+      el:"#app",
+      data:{
+        message:"模板",
+        isAgree:false,
+        //hobbies集合
+        hobbies:[]
+      }
+    })
+</script>
+</body>
+</html>

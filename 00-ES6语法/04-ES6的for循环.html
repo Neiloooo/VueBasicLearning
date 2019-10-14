@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>强制for循环</title>
+</head>
+<body>
+<div id="app">
+    {{message}}
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue({
+      el:"#app",
+      data:{
+        message:"模板",
+        books: [
+          {
+            id: 1,
+            name: '《算法导论》',
+            date: '2006-9',
+            price: 85.00,
+            count: 1
+          },
+          {
+            id: 2,
+            name: '《UNIX编程艺术》',
+            date: '2006-2',
+            price: 59.00,
+            count: 1
+          },
+          {
+            id: 3,
+            name: '《编程珠玑》',
+            date: '2008-10',
+            price: 39.00,
+            count: 1
+          },
+          {
+            id: 4,
+            name: '《代码大全》',
+            date: '2006-3',
+            price: 128.00,
+            count: 1
+          }
+        ]
+      },
+      computed:{
+        totalPrice(){
+          //1.强制for循环遍历数组索引
+          //for (let i in this.books)
+          let totalPrice=0;
+          for(let i in this.books){
+            const book = this.books[i];
+            totalPrice+=book.price*book.count
+          }
+          //2.for循环直接遍历出数组中的对象
+          //for (let i of this.books)
+          let totalPrice1 =0
+          for (let item of this.books){
+            totalPrice+=item.price*item.count
+          }
+        }
+      }
+    })
+</script>
+</body>
+</html>
